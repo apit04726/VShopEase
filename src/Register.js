@@ -1,0 +1,193 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
+const Register = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
+  const [message, setMessage] = useState("");
+  const [showMsg, setShowMsg] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Get users from localStorage
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    // Check if email already exists
+    const exists = users.some(u => u.email === formData.email);
+    if (exists) {
+      setMessage("Email already registered. Please login.");
+      setShowMsg(true);
+      setTimeout(() => setShowMsg(false), 3000);
+      return;
+    }
+    // Add new user
+    users.push({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password
+    });
+    localStorage.setItem("users", JSON.stringify(users));
+    setMessage("Registration successful! Please login.");
+    setShowMsg(true);
+    setTimeout(() => {
+      setShowMsg(false);
+      navigate("/login");
+    }, 1500);
+  };
+  return (
+    <Wrapper>
+      <h2 className="common-heading">Register Now</h2>
+      <FormContainer>
+        <ContactForm>
+          {showMsg && <Message>{message}</Message>}
+          <form onSubmit={handleSubmit} className="contact-inputs">
+            <Input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+            <SubmitButton type="submit">Register</SubmitButton>
+          </form>
+          <NoAccount>
+            Already have an account?
+            <a href="/login" className="register-link">Login now</a>
+          </NoAccount>
+        </ContactForm>
+      </FormContainer>
+    </Wrapper>
+  );
+};
+// Styled Components (copied and adapted from login.js)
+const Wrapper = styled.section`
+  padding: 9rem 0 5rem 0;
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.bg};
+`;
+
+const FormContainer = styled.div`
+  margin: 6rem auto 0;
+  max-width: 1200px;
+  padding: 0 2rem;
+`;
+
+const ContactForm = styled.div`
+  max-width: 50rem;
+  margin: 0 auto;
+  position: relative;
+`;
+
+const Message = styled.p`
+  position: sticky;
+  top: 0;
+  background-color: ${({ theme }) => theme.colors.btn};
+  color: ${({ theme }) => theme.colors.white};
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  animation: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 1.6rem 2.4rem;
+  margin-bottom: 2rem;
+  color: ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) => theme.colors.bg};
+  border: 1px solid rgba(98, 84, 243, 0.5);
+  text-transform: uppercase;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.colors.btn};
+    box-shadow: 0 0 0 2px rgba(98, 84, 243, 0.2);
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.text};
+    opacity: 0.6;
+  }
+`;
+
+const SubmitButton = styled.button`
+  width: 14rem;
+  padding: 1.2rem 2.4rem;
+  background-color: ${({ theme }) => theme.colors.btn};
+  color: ${({ theme }) => theme.colors.white};
+  border: none;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.white};
+    border: 1px solid ${({ theme }) => theme.colors.btn};
+    color: ${({ theme }) => theme.colors.btn};
+    transform: scale(0.95);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+`;
+
+const NoAccount = styled.div`
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: #333;
+  .register-link {
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: 500;
+    margin-left: 0.3rem;
+    transition: color 0.2s;
+  }
+  .register-link:hover {
+    color: #0056b3;
+  }
+`;
+
+export default Register;

@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* All Button CSS */
+#imagbanar {
+  width: 83px;
+  height: 53px;
+  mix-blend-mode: multiply;
+}
+
+#imagbanar:hover {
+  image-rendering: pixelated;
+}
+
+#loading {
+  text-align: center;
+  font-size: 30px;
+}
+
+#checkNOW {
+  color: black;
+  font-size: 167%;
+  font-family: math;
+}
+
+#secondloading {
+  text-align: center;
+  font-size: 30px;
+
+}
+
+#socialmeaid:hover {
+  border-color: rgb(10, 20, 53);
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+#FAFAtwitter:hover {
+  border-color: #00acee;
+  background-color: #00acee;
+}
+
+#FAFAfacebook:hover {
+  border-color: RGB(24, 119, 242);
+  background-color: RGB(24, 119, 242);
+}
+
+#FAFAyoutibe:hover {
+  border-color: rgb(205, 32, 31);
+  background-color: rgb(205, 32, 31);
+}
+
+#contactt {
+  color: white;
+  font-size: initial;
+}
+
+#footerbtn {
+  background-color: darkgoldenrod;
+  border-color: darkgoldenrod;
+}
+
+#footerbtn:hover {
+  background-color: darkgreen;
+  border-color: darkgreen;
+}
+
+#footerbtn {
+  border-radius: 5px;
+}
+
+#footerSubscri {
+  border-radius: 5px;
+
+}
+
+#footerBtnGEtStrt {
+  border-radius: 5px;
+}
+
+#footerBtnGEtStrt:hover {
+  background-color: darkblue;
+}
+
+#ShopBtn {
+  border-radius: 5px;
+  background-color: darkgoldenrod;
+}
+
+#ShopBtn:hover {
+  background-color: blue;
+}
+
+#ContactBtn {
+  border-radius: 5px;
+}
+
+#ContactForm {
+  border-radius: 7px;
+}
+
+#addTocart {
+  border-radius: 5px;
+  background-color: darkgoldenrod;
+}
+
+#addTocart:hover {
+  background-color: rgb(33, 150, 243);
+}
+
+#productListBtn {
+  border-radius: 5px;
+}
+
+#productListBtn:hover {
+  background-color: darkblue;
+  cursor: pointer;
+  border-color: darkblue;
+}
+
+#ErrorPageBtn {
+  border-radius: 5px;
+  background-color: darkgreen;
+}
+
+#ErrorPageBtn:hover {
+  background-color: #00acee;
+}
+
+#footerNm {
+  color: darkgoldenrod;
+}
+
+#iframe {
+  mix-blend-mode: multiply;
+}
+
+#addToCart {
+  border-radius: 10px;
+}
+
+#addToCart:hover {
+  background-color: darkblue;
+}
+
+.sticky-menu {
+  position: fixed;
+  height: 500px;
+  overflow: overlay;
+  scrollbar-width: none;
+}
+
+.sticky-menu::-webkit-scrollbar {
+  display: none;
+}
+
+
+.homeUrl {
+  color: darkblue;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
