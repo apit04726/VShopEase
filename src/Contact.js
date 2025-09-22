@@ -4,10 +4,8 @@ import styled from "styled-components";
 const Wrapper = styled.section`
     padding: 9rem 0 5rem 0;
     text-align: center;
-
     .container {
       margin-top: 6rem;
-
       .contact-form {
         max-width: 50rem;
         margin: auto;
@@ -17,7 +15,6 @@ const Wrapper = styled.section`
           display: flex;
           flex-direction: column;
           gap: 3rem;
-
           input, textarea {
     max-width: 50rem;
     color: rgb(33, 37, 41);
