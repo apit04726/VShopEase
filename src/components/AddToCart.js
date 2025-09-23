@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa";
 import PropTypes from 'prop-types';
@@ -12,9 +14,9 @@ const AddToCart = ({ product }) => {
   const { id, colors, stock } = product;
   const [color, setColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
-  const [showWarning, setShowWarning] = useState(false);
+  // Remove showWarning state, use toast instead
   const [redirect, setRedirect] = useState(false);
-  const [countdown, setCountdown] = useState(5);
+  // Removed unused countdown state
 
   const setDecrease = () => {
     setAmount(prevAmount => Math.max(prevAmount - 1, 1));
@@ -31,18 +33,8 @@ const AddToCart = ({ product }) => {
   const handleAddToCart = (e) => {
     if (!isLoggedIn()) {
       e.preventDefault();
-      setShowWarning(true);
-      setCountdown(5);
-      const interval = setInterval(() => {
-        setCountdown(prev => {
-          if (prev <= 1) {
-            clearInterval(interval);
-            setRedirect(true);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+      toast.warn("Please login to add items to cart!", { position: "top-right" });
+      setTimeout(() => setRedirect(true), 4000);
       return;
     }
     addToCart(id, color, amount, product);
@@ -77,11 +69,20 @@ const AddToCart = ({ product }) => {
         setDecrease={setDecrease}
         setIncrease={setIncrease}
       />
-      {showWarning && (
-        <div style={{ color: 'red', marginBottom: '1rem', fontSize: '16px' }}>
-          Please login to add items to cart. Redirecting to login in {countdown} second{countdown !== 1 ? 's' : ''}...
-        </div>
-      )}
+      {/* Toast notifications will show here */}
+      <ToastContainer
+        position="top-right"
+        toastStyle={{ fontSize: '16px', borderRadius: '8px', minWidth: '280px' }}
+        bodyStyle={{ fontSize: '16px' }}
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <NavLink to="/cart" onClick={handleAddToCart}>
         <Button className="btn" id="addToCart">ADD TO CART</Button>
       </NavLink>

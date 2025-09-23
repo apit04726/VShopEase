@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
@@ -57,23 +59,14 @@ const Wrapper = styled.section`
   `;
 
 const Contact = () => {
-  const [message, setMessage] = useState("");
+  // Remove message state, use toast instead
 
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        setMessage("");
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [message]);
+  // Remove message effect
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const form = e.target;
     const formData = new FormData(form);
-
     try {
       const response = await fetch(form.action, {
         method: form.method,
@@ -82,15 +75,14 @@ const Contact = () => {
           'Accept': 'application/json'
         }
       });
-
       if (response.ok) {
-        setMessage("Thank you for your message! We will get back to you soon.");
+        toast.success("Thank you for your message! We will get back to you soon.", { position: "top-right" });
         form.reset();
       } else {
-        setMessage("Oops! There was a problem with your submission. Please try again.");
+        toast.error("Oops! There was a problem with your submission. Please try again.", { position: "top-right" });
       }
     } catch (error) {
-      setMessage("Oops! There was a problem with your submission. Please try again.");
+      toast.error("Oops! There was a problem with your submission. Please try again.", { position: "top-right" });
     }
   };
 
@@ -112,7 +104,20 @@ const Contact = () => {
 
       <div className="container">
         <div className="contact-form">
-          {message && <p className="message">{message}</p>}
+          {/* Toast notifications will show here */}
+          <ToastContainer
+            position="top-right"
+            toastStyle={{ fontSize: '16px', borderRadius: '8px', minWidth: '280px' }}
+            bodyStyle={{ fontSize: '16px' }}
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <form action="https://formspree.io/f/xblrjbwv" method="POST" className="contact-inputs" onSubmit={handleSubmit}>
             <input type="text" placeholder="username" name="username" required autoComplete="off" />
             <input type="email" placeholder="Email" name="Email" required autoComplete="off" />

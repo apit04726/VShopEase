@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styled, { keyframes } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { Button } from "../styles/Button";
@@ -59,16 +61,16 @@ const Footer = () => {
         alert("Oops! There was a problem submitting your form");
       }
     } catch (error) {
-      alert("Oops! There was a problem submitting your form");
+      toast.error("Oops! There was a problem submitting your form", { position: "top-center" });
     }
   };
 
   useEffect(() => {
     if (isSubmitted) {
+      toast.success("Form submitted successfully!", { position: "top-center" });
       const timer = setTimeout(() => {
         setIsSubmitted(false);
       }, 3000);
-
       return () => clearTimeout(timer);
     }
   }, [isSubmitted]);
@@ -76,6 +78,7 @@ const Footer = () => {
   return (
     <>
       <Wrapper>
+        <ToastContainer />
         <section className="contact-short">
           <div className="grid grid-two-column">
             <div>

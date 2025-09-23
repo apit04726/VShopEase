@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -8,8 +10,7 @@ const Register = () => {
     email: "",
     password: ""
   });
-  const [message, setMessage] = useState("");
-  const [showMsg, setShowMsg] = useState(false);
+  // Remove message and showMsg state, use toast instead
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,9 +25,7 @@ const Register = () => {
     // Check if email already exists
     const exists = users.some(u => u.email === formData.email);
     if (exists) {
-      setMessage("Email already registered. Please login.");
-      setShowMsg(true);
-      setTimeout(() => setShowMsg(false), 3000);
+  toast.warn("Email already registered. Please login.", { position: "top-right" });
       return;
     }
     // Add new user
@@ -36,10 +35,8 @@ const Register = () => {
       password: formData.password
     });
     localStorage.setItem("users", JSON.stringify(users));
-    setMessage("Registration successful! Please login.");
-    setShowMsg(true);
+  toast.success("Registration successful! Please login.", { position: "top-right" });
     setTimeout(() => {
-      setShowMsg(false);
       navigate("/login");
     }, 1500);
   };
@@ -48,7 +45,20 @@ const Register = () => {
       <h2 className="common-heading">Register Now</h2>
       <FormContainer>
         <ContactForm>
-          {showMsg && <Message>{message}</Message>}
+          {/* Toast notifications will show here */}
+          <ToastContainer
+            position="top-right"
+            toastStyle={{ fontSize: '16px', borderRadius: '8px', minWidth: '280px' }}
+            bodyStyle={{ fontSize: '16px' }}
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <form onSubmit={handleSubmit} className="contact-inputs">
             <Input
               type="text"
@@ -107,21 +117,7 @@ const ContactForm = styled.div`
   position: relative;
 `;
 
-const Message = styled.p`
-  position: sticky;
-  top: 0;
-  background-color: ${({ theme }) => theme.colors.btn};
-  color: ${({ theme }) => theme.colors.white};
-  padding: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 5px;
-  animation: fadeIn 0.3s ease-in-out;
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-`;
+// Removed unused Message styled component
 
 const Input = styled.input`
   width: 100%;
