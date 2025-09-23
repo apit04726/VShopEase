@@ -14,40 +14,6 @@ const Cart = () => {
       </EmptyDiv>
     )
   }
-  // Razorpay payment handler
-  const handleRazorpayPayment = async () => {
-    const amount = total_price + shipping_fee;
-
-    if (typeof window.Razorpay !== "function") {
-      alert("Razorpay SDK not loaded. Please check your internet connection or script tag in public/index.html.");
-      return;
-    }
-
-    const options = {
-      key: "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay key
-      amount: amount * 100, // Amount in paise
-      currency: "INR",
-      name: "VShopEase",
-      description: "Order Payment",
-      image: "/images/logo192.png", // Optional logo
-      handler: function (response) {
-        alert("Payment successful! Razorpay Payment ID: " + response.razorpay_payment_id);
-        clearCart();
-      },
-      prefill: {
-        name: "Customer Name",
-        email: "customer@example.com",
-        contact: "9999999999"
-      },
-      theme: {
-        color: "#3399cc"
-      }
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-  };
-
   return (
     <Wrapper>
       <div className="container">
@@ -88,9 +54,6 @@ const Cart = () => {
               <p><FormatPrice price={total_price + shipping_fee} /></p>
             </div>
           </div>
-          <Button style={{marginTop: "2rem"}} onClick={handleRazorpayPayment}>
-            Pay with Razorpay
-          </Button>
         </div>
       </div>
     </Wrapper>
