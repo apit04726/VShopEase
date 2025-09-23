@@ -18,7 +18,6 @@ const ErrorPage = () => {
       </div>
     </Wrapper>
   );
-  
 };
 const Wrapper = styled.section`
    .container {

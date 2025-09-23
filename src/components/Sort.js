@@ -79,17 +79,35 @@ const Wrapper = styled.section`
   }
 
   .sort-selection .sort-selection--style {
-    padding: 0.5rem;
+    padding: 0.7rem 1.2rem;
     cursor: pointer;
-    border-radius: 8px;
-    border-color:blue ;
-
-    .sort-select--option {
-      padding: 0.5rem 0;
-      cursor: pointer;
-      height: 2rem;
-      padding: 10px;
-
+    border-radius: 12px;
+    border: 1.5px solid rgb(98 84 243 / 50%);
+    background: #f8f9fa;
+    font-size: 14px;
+    color: #222;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    min-width: 160px;
+    margin-left: 1rem;
+  }
+  .sort-selection .sort-selection--style:focus {
+    border-color: rgb(98 84 243 / 50%);
+    box-shadow: 0 0 0 2px #007bff33;
+  }
+  .sort-selection .sort-selection--style option {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    background: #fff;
+    color: #222;
+  }
+  @media (max-width: 600px) {
+    .sort-selection .sort-selection--style {
+      min-width: 120px;
+      font-size: 1rem;
+      padding: 0.5rem 0.7rem;
+      margin-left: 0.5rem;
     }
   }
 `;

@@ -65,7 +65,6 @@ const FilterSection = () => {
           })}
         </div>
       </div>
-
       <div className="filter-company">
         <h3>Company</h3>
 
@@ -85,7 +84,6 @@ const FilterSection = () => {
           </select>
         </form>
       </div>
-
       <div className="filter-colors colors">
         <h3>Colors</h3>
 
@@ -186,7 +184,29 @@ border-radius: 10px;
 
   .filter-color-style {
     display: flex;
-    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  @media (max-width: 600px) {
+    .filter-color-style {
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+      padding-left: 0;
+    }
+    .filter-color-style button,
+    .btnStyle {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+      border-radius: 50%;
+      border: 1.5px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
   }
 
   .color-all--style {
