@@ -1,4 +1,7 @@
 const cartReducer = (state, action) => {
+  if (action.type === "LOAD_CART") {
+    return { ...state, cart: action.payload };
+  }
   if (action.type === "ADD_TO_CART") {
     const { id, color, amount, product } = action.payload;
 

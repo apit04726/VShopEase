@@ -34,6 +34,7 @@ const Loginform = () => {
       // Simulate token
       localStorage.setItem("token", "dummy-token");
       localStorage.setItem("user", JSON.stringify(user));
+      window.dispatchEvent(new Event("userChanged"));
       setMessage("Login successful! Redirecting...");
       setTimeout(() => {
         navigate("/"); // Redirect to home page

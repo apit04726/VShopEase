@@ -189,11 +189,12 @@ const Nav = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setIsLoggedIn(false);
-    setUser(null);
-    window.location.href = "/login";
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  setIsLoggedIn(false);
+  setUser(null);
+  window.dispatchEvent(new Event("userChanged"));
+  window.location.href = "/login";
   };
 
   return (
