@@ -14,6 +14,7 @@ const AddToCart = ({ product }) => {
   const [amount, setAmount] = useState(1);
   const [showWarning, setShowWarning] = useState(false);
   const [redirect, setRedirect] = useState(false);
+  const [countdown, setCountdown] = useState(5);
 
   const setDecrease = () => {
     setAmount(prevAmount => Math.max(prevAmount - 1, 1));
@@ -31,9 +32,17 @@ const AddToCart = ({ product }) => {
     if (!isLoggedIn()) {
       e.preventDefault();
       setShowWarning(true);
-      setTimeout(() => {
-        setRedirect(true);
-      }, 5000);
+      setCountdown(5);
+      const interval = setInterval(() => {
+        setCountdown(prev => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            setRedirect(true);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
       return;
     }
     addToCart(id, color, amount, product);
@@ -70,7 +79,7 @@ const AddToCart = ({ product }) => {
       />
       {showWarning && (
         <div style={{ color: 'red', marginBottom: '1rem', fontSize: '16px' }}>
-          Please login to add items to cart. Redirecting to login in 5 seconds...
+          Please login to add items to cart. Redirecting to login in {countdown} second{countdown !== 1 ? 's' : ''}...
         </div>
       )}
       <NavLink to="/cart" onClick={handleAddToCart}>
