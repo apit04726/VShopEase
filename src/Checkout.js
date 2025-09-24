@@ -19,7 +19,6 @@ const Checkout = () => {
             alert("Razorpay SDK failed to load. Are you online?");
             return;
         }
-
         // IMPORTANT: Replace with your Razorpay TEST key from https://dashboard.razorpay.com/app/keys
         const razorpayKey = "YOUR_RAZORPAY_KEY_ID";
         if (!razorpayKey || razorpayKey === "YOUR_RAZORPAY_KEY_ID") {
