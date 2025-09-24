@@ -8,6 +8,7 @@ import LoginForm from "./login";
 import Register from "./Register";
 import SingleProduct from "./SingleProduct";
 import Cart from "./Cart";
+import Checkout from "./Checkout";
 import ErrorPage from "./ErrorPage";
 import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/vshopease/:id" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <Footer />

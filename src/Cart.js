@@ -36,6 +36,9 @@ const Cart = () => {
             <Button className="continue-shopping">Continue Shopping</Button>
           </NavLink>
           <Button className="btn btn-clear" id="clear-btn" onClick={clearCart}>Clear Cart</Button>
+          <NavLink to="/checkout">
+            <Button className="checkout-btn">Proceed to Checkout</Button>
+          </NavLink>
         </div>
 
         {/* Cart Summary Section */}
