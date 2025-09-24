@@ -8,7 +8,7 @@ const About = () => {
   const { myName } = useProductContext();
 
   const data = {
-    name:"My Ecommerce",
+    name:"VShopEase",
    }
    return (
     <>

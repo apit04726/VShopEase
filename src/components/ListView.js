@@ -20,7 +20,7 @@ const ListView = ({ products }) => {
                   <FormatPrice price={price} />
                 </p>
                 <p>{description.slice(0, 90)}...</p>
-                <NavLink to={`/singleproduct/${id}`} className="btn-main">
+                <NavLink to={`/vshopease/${id}`} className="btn-main">
                   <Button className="btn" id="productListBtn"  >Read More</Button>
                 </NavLink>
               </div>

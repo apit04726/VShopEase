@@ -10,7 +10,7 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <EmptyDiv>
-        <h3>No <a className="homeUrl" href="http://localhost:3000/Products">Cart</a> in Item</h3>
+        <h3>No <a className="homeUrl" href="https://vshopease.vercel.app/Products">Cart</a> in Item</h3>
       </EmptyDiv>
     )
   }

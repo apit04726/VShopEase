@@ -100,9 +100,9 @@ const Footer = () => {
             <div className="footer-about">
               <h3>
                 <AnimatedLogo className="footer-logo">
-                  <span className="logo-part">Rv </span>
-                  <span className="logo-part" >ecomm </span>
-                  <span className="logo-part">store</span>
+                  <span className="logo-part">V</span>
+                  <span className="logo-part" >Shop</span>
+                  <span className="logo-part">Ease</span>
                 </AnimatedLogo>
               </h3>
               <p>Businesses, even those that recorded major profits, struggled at some point during the year. </p>

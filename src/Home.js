@@ -8,7 +8,7 @@ import FeatureProduct from './components/FeatureProduct';
 const Home = () => {
   const data = {
     // name: "My Store"     
-    name:"My World",
+    name:"VShopEase",
   }
   return (
     <>

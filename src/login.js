@@ -98,7 +98,7 @@ const Wrapper = styled.section`
 
 const NoAccountStyled = styled.div`
   margin-top: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 16px;
   color: #333;
   .register-link {
     color: #007bff;

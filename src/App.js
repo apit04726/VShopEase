@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/singleproduct/:id" element={<SingleProduct />} />
+          <Route path="/vshopease/:id" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
