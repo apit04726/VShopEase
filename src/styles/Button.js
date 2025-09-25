@@ -27,4 +27,11 @@ export const Button = styled.button`
     color: rgb(255 255 255);
     font-size: 1.8rem;
   }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    font-size: 1.3rem;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    min-width: 0;
+  }
 `;
