@@ -94,6 +94,9 @@ const Wrapper = styled.section`
   #clear-btn{
   border-radius: 5px;
   }
+  .checkout-btn{
+  border-radius: 5px;
+  }
 
   #clear-btn:hover{
  background-color: green;
