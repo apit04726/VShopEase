@@ -164,30 +164,15 @@ input, textarea{
   }
 
    @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    html {
+       html {
       font-size: 50%;
-      overflow-x: hidden;
-    }
-    body {
-      overflow-x: hidden;
-    }
-    h1 {
-      font-size: 2.2rem;
-    }
-    h2 {
-      font-size: 1.7rem;
-    }
-    h3 {
-      font-size: 1.2rem;
-    }
-    p, button {
-      font-size: 1.1rem;
-    }
-    .grid {
-      gap: 1.2rem;
-    }
-    .grid-two-column, .grid-three-column, .grid-four-column {
-      grid-template-columns: 1fr;
-    }
   }
+
+.grid{ 
+  gap: 3.2rem;
+}
+      .grid-two-column , .grid-three-column, .grid-four-column{
+          grid-template-columns: 1fr;
+        }
+    }
 `; 
